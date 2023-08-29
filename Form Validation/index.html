@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>Form Validation</title>
+ <style>
+ form {
+ width: 400px;
+ margin: 0 auto;
+ padding: 20px;
+ border: 1px solid #ccc;
+}
+
+input {
+ width: 100%;
+ padding: 10px;
+ border: 1px solid #ccc;
+}
+
+input[type="submit"] {
+ background-color: #000;
+ color: #fff;
+ cursor: pointer;
+}
+ .error {
+ color: red;
+}
+ </style>
+</head>
+<body>
+ <h1>Form Validation</h1>
+ <form action="" onsubmit="return validateForm()">
+  <input type="text" name="name" placeholder="Your name">
+  <input type="email" name="email" placeholder="Your email address">
+  <input type="submit" value="Submit">
+  <span class="error"></span>
+ </form>
+ <script>
+ function validateForm() {
+  const name = document.querySelector("input[name='name']").value;
+  const email = document.querySelector("input[name='email']").value;
+
+  if (name === "") {
+    const errorElement = document.querySelector(".error");
+    errorElement.textContent = "Please enter your name.";
+    return false;
+  }
+
+  if (!email.includes("@")) {
+    const errorElement = document.querySelector(".error");
+    errorElement.textContent = "Please enter a valid email address.";
+    return false;
+  }
+
+  return true;
+ }
+</script>
+</body>
+</html>
